@@ -1,12 +1,15 @@
 #include "raylib.h"
+#include "object.cpp"
+#include <iostream>
+#include <string>
+#include "DynamicArrays.h"
+#include "assert.h"
 
-
-int main() {
+int fake_main() {
   InitWindow(500, 300, "fuck");
-  
+
   while (!WindowShouldClose()) {
     BeginDrawing();
-      
       ClearBackground(RAYWHITE);
       
       Vector2 start = {0.0, 0.0};
@@ -22,4 +25,9 @@ int main() {
   return 0;
 }
 
+int main() {
+  DynamicInt arr;
+
+  return 0;
+}
 

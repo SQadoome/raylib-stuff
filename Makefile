@@ -1,12 +1,19 @@
 CXX = clang++
-TARGET = game
-SRC = main.cpp
-
 CXXFLAGS = -Wall -std=c++17 $(shell pkg-config --cflags raylib)
 LIBS = $(shell pkg-config --libs raylib)
 
-all:
-	$(CXX) $(SRC) -o $(TARGET) $(CXXFLAGS) $(LIBS)
+
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS:.cpp=.o)
+TARGET = app
+
+all: $(TARGET)
+	
+$(TARGET): $(OBJS)
+	$(CXX) $(OBJS) -o $(TARGET) $(LIBS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJS)
