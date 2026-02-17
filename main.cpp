@@ -3,11 +3,17 @@
 
 int main() {
   InitWindow(500, 300, "fuck");
-
+  
   while (!WindowShouldClose()) {
     BeginDrawing();
+      
       ClearBackground(RAYWHITE);
-      DrawLine(0, 0, 500, 300, LIGHTGRAY);
+      
+      Vector2 start = {0.0, 0.0};
+      Vector2 end = {500, 300};
+      
+      DrawLineEx(start, end, 5.0f, LIGHTGRAY);
+     
     EndDrawing();
   }
   
@@ -15,11 +21,5 @@ int main() {
 
   return 0;
 }
-
-
-
-
-
-
 
 
