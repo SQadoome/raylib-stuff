@@ -5,29 +5,55 @@
 #include "DynamicArrays.h"
 #include "assert.h"
 
-int fake_main() {
-  InitWindow(500, 300, "fuck");
+void handle_input();
 
+int main() {
+  InitWindow(1280, 720, "Procedural animations");
+  DynamicVector2 points;
+  points.append(Vector2 {200, 50});
+  points.append(Vector2 {100, 500});
+  points.append(Vector2 {1, 1});
+  points.append(Vector2 {1, 1});
+  points.append(Vector2 {1, 1});
+  points.append(Vector2 {1, 1});
+  
+  for (int i = 0; i < 6; i++) {
+    points.append(Vector2 {5, 0});
+  }
+  std::cout << points.to_string() << std::endl;
+  for (int i = 0; i < 8; i++) {
+    points.remove_at(0);
+  }
+  std::cout << points.to_string() << std::endl;
+  points.remove_at(50);
+  // main loop
   while (!WindowShouldClose()) {
+    handle_input();
+
     BeginDrawing();
-      ClearBackground(RAYWHITE);
+     ClearBackground(LIGHTGRAY); 
+    
+     for (int i = 0; i < points.length; i++) {
+      DrawLineV(Vector2 {0, 0}, points.get_at(i), DARKGRAY); 
+     }
       
-      Vector2 start = {0.0, 0.0};
-      Vector2 end = {500, 300};
-      
-      DrawLineEx(start, end, 5.0f, LIGHTGRAY);
-     
     EndDrawing();
   }
-  
+
   CloseWindow();
 
   return 0;
 }
 
-int main() {
-  DynamicInt arr;
+int last_key = 0;
+void handle_input() {
+  int key = GetKeyPressed();
 
-  return 0;
+  switch(key) {
+    case KEY_F11:
+      ToggleFullscreen();
+      break;
+  }
+
 }
 
