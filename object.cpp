@@ -1,18 +1,19 @@
 #include "raylib.h"
 #include <string>
+#include "object.h"
 
+Object::Object() {
 
-class Object {
-  public:
-    std::string class_name = "Object";
+}
 
-    void _process() {
-    
-    }
+void _process() {
+  
+}
 
-    std::string get_class_chain() {
-      std::string chain = class_name;
-      return chain;
-    }
-};
+std::string Object::get_class() {
+  return "Object";
+}
+std::string Object::get_class_tree() {
+  return class_tree;
+}
 

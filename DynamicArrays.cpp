@@ -160,9 +160,12 @@ void DynamicVector2::erase(Vector2 target) {
       length -= 1;
       break;
     }
-
   }
-  
+}
 
+void DynamicVector2::set_at(int index, Vector2 value) {
+  msg_assert((index > -1 && index < length), "Invalid index: " + std::to_string(index));
+  
+  vectors[index] = value;
 }
 

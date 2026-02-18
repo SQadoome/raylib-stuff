@@ -1,41 +1,33 @@
 #include "raylib.h"
-#include "object.cpp"
 #include <iostream>
 #include <string>
 #include "DynamicArrays.h"
 #include "assert.h"
+#include "Line2D.h"
+#include "LinkedLists.h"
+#include "object.h"
 
 void handle_input();
+void process_objects();
 
 int main() {
   InitWindow(1280, 720, "Procedural animations");
-  DynamicVector2 points;
-  points.append(Vector2 {200, 50});
-  points.append(Vector2 {100, 500});
-  points.append(Vector2 {1, 1});
-  points.append(Vector2 {1, 1});
-  points.append(Vector2 {1, 1});
-  points.append(Vector2 {1, 1});
+  Line2D line;
+  line.add_point(Vector2 {0, 0});
+  line.add_point(Vector2 {500, 200});
   
-  for (int i = 0; i < 6; i++) {
-    points.append(Vector2 {5, 0});
-  }
-  std::cout << points.to_string() << std::endl;
-  for (int i = 0; i < 8; i++) {
-    points.remove_at(0);
-  }
-  std::cout << points.to_string() << std::endl;
-  points.remove_at(50);
+  LinkedObjects objects(&line);
+  objects.start->object->_process();
+
   // main loop
   while (!WindowShouldClose()) {
+    line._process();
     handle_input();
+    process_objects();
 
     BeginDrawing();
      ClearBackground(LIGHTGRAY); 
     
-     for (int i = 0; i < points.length; i++) {
-      DrawLineV(Vector2 {0, 0}, points.get_at(i), DARKGRAY); 
-     }
       
     EndDrawing();
   }
@@ -43,6 +35,9 @@ int main() {
   CloseWindow();
 
   return 0;
+}
+
+void process_objects() {
 }
 
 int last_key = 0;
