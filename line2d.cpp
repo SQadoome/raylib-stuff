@@ -1,9 +1,10 @@
-#include "Line2D.h"
+#include "line2d.hpp"
 #include "raylib.h"
-#include "object.h"
+#include "node.hpp"
+#include <iostream>
 
-Line2D::Line2D() : Object() {
- class_tree += "/Line2D"; 
+Line2D::Line2D() : Node() {
+  class_tree += "/Line2D"; 
 }
 
 std::string Line2D::get_class() { return "Line2D"; }
@@ -29,10 +30,12 @@ Vector2 Line2D::get_point_at(int index) {
 }
 
 void Line2D::_process() {
-    if (points.length > 1) {
-      for (int i = 1; i < points.length; i++) {
-        DrawLineV(points.get_at(i - 1), points.get_at(i), DARKGRAY);
-      }
+  Node::_process();
+  
+  if (points.length > 1) {
+    for (int i = 1; i < points.length; i++) {
+      DrawLineV(points.get_at(i - 1), points.get_at(i), DARKGRAY);
     }
+  }
 }
 

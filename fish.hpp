@@ -1,16 +1,7 @@
-#include "object.h"
-#include "Line2D.h"
+#include "node.hpp"
 #include <string>
 
-class Fish : public Object {
-  private:
-    Line2D line;
-    
+class Fish : public Node {
 
-  public:
-    Fish();
-    
-    void _process();
-    std::string get_class();
 };
 

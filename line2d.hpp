@@ -1,9 +1,9 @@
 #pragma once
 #include "raylib.h"
-#include "DynamicArrays.h"
-#include "object.h"
+#include "dynamic_arrays.hpp"
+#include "node.hpp"
 
-class Line2D : public Object {
+class Line2D : public Node {
   private:
     DynamicVector2 points;
   

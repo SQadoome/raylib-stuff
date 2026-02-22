@@ -1,33 +1,37 @@
 #include "raylib.h"
-#gnclude <iostream>
+#include <iostream>
 #include <string>
-#include "dynamic_arrays.hpp"
-#include "assert.hpp"
-#include "linked_lists.hpp"
-#include "object.hpp"
-#include "fish.hpp"
+#include "node.hpp"
+#include "line2d.hpp"
 
-
-Object root;
+Node root;
 
 void handle_input();
+void process_nodes();
 
 int main() {
   InitWindow(1280, 720, "Procedural animations");
-  Fish fish;
+  Line2D line;
+  line.add_point(Vector2 { 0, 0 });
+  line.add_point(Vector2 { 500, 20 });
+  root.add_child(&line);
   
-  root.add_child_object(fish);
-   
+  Line2D line2;
+  line2.add_point(Vector2 { 0, 0 });
+  line2.add_point(Vector2 { 20, 500 });
+  line2.add_point(Vector2 { 300, 700 });
+  root.add_child(&line2);
+
   // main loop
   while (!WindowShouldClose()) {
     handle_input();
-    root._process();
-    
 
-    BeginDrawing();
-     ClearBackground(LIGHTGRAY);
     
-      
+   
+    BeginDrawing();
+      ClearBackground(LIGHTGRAY);
+      process_nodes();
+     
     EndDrawing();
   }
 
@@ -46,5 +50,9 @@ void handle_input() {
       break;
   }
 
+}
+
+void process_nodes() {
+  root._process();
 }
 

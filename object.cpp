@@ -1,13 +1,10 @@
 #include "raylib.h"
 #include <string>
-#include "object.h"
-
+#include "object.hpp"
 
 Object::Object() {
   class_tree += "Object";
 }
-
-void Object::_process() { }
 
 std::string Object::get_class() {
   return "Object";
