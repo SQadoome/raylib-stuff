@@ -1,43 +1,39 @@
 #include "raylib.h"
-#include <iostream>
+#gnclude <iostream>
 #include <string>
-#include "DynamicArrays.h"
-#include "assert.h"
-#include "Line2D.h"
-#include "LinkedLists.h"
-#include "object.h"
+#include "dynamic_arrays.hpp"
+#include "assert.hpp"
+#include "linked_lists.hpp"
+#include "object.hpp"
+#include "fish.hpp"
+
+
+Object root;
 
 void handle_input();
-void process_objects();
 
 int main() {
   InitWindow(1280, 720, "Procedural animations");
-  Line2D line;
-  line.add_point(Vector2 {0, 0});
-  line.add_point(Vector2 {500, 200});
+  Fish fish;
   
-  LinkedObjects objects(&line);
-  objects.start->object->_process();
-
+  root.add_child_object(fish);
+   
   // main loop
   while (!WindowShouldClose()) {
-    line._process();
     handle_input();
-    process_objects();
+    root._process();
+    
 
     BeginDrawing();
-     ClearBackground(LIGHTGRAY); 
+     ClearBackground(LIGHTGRAY);
     
       
     EndDrawing();
   }
 
   CloseWindow();
-
+  
   return 0;
-}
-
-void process_objects() {
 }
 
 int last_key = 0;

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "linked_litst.hpp"
+
 
 class Object {
   public:
@@ -12,5 +12,4 @@ class Object {
     std::string get_class_tree();
     std::string get_class();
 };
-
 

@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include <string>
-#include "assert.h"
-#include "DynamicArrays.h"
+#include "assert.hpp"
+#include "dynamic_arrays.hpp"
 #include <iostream>
 
 DynamicInt::DynamicInt() {

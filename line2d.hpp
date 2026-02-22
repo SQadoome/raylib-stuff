@@ -10,7 +10,7 @@ class Line2D : public Object {
   public:
     Line2D();
     
-    virtual void _process() override;
+    void _process() override;
     std::string get_class();
     void add_point(Vector2 new_point);
     void set_point_position(int index, Vector2 value);

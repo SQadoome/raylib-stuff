@@ -1,8 +1,9 @@
 #include "Line2D.h"
 #include "raylib.h"
+#include "object.h"
 
 Line2D::Line2D() : Object() {
-  
+ class_tree += "/Line2D"; 
 }
 
 std::string Line2D::get_class() { return "Line2D"; }
