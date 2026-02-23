@@ -4,7 +4,9 @@
 #include <iostream>
 
 Line2D::Line2D() : Node() {
-  class_tree += "/Line2D"; 
+  class_tree += "/Line2D";
+  color = {255, 255, 255, 255};
+  width = 8;
 }
 
 std::string Line2D::get_class() { return "Line2D"; }

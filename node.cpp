@@ -12,16 +12,12 @@ std::string Node::get_class() {
 }
 
 void Node::_process() {
-  if (children_chain->is_empty == false) {
-
-    LinkedNode* next = &(children_chain->start);
+  LinkedNode* next = children_chain->start;
     
-    while (next != nullptr) {
+  while (next != nullptr) {
       
-      next->holding->_process();
-      next = next->points_to;
-      
-    }
+    next->holding->_process();
+    next = next->points_to;
 
   }
 }

@@ -3,6 +3,7 @@
 #include <string>
 #include "node.hpp"
 #include "line2d.hpp"
+#include "ik_test.hpp"
 
 Node root;
 
@@ -11,16 +12,11 @@ void process_nodes();
 
 int main() {
   InitWindow(1280, 720, "Procedural animations");
-  Line2D line;
-  line.add_point(Vector2 { 0, 0 });
-  line.add_point(Vector2 { 500, 20 });
-  root.add_child(&line);
-  
-  Line2D line2;
-  line2.add_point(Vector2 { 0, 0 });
-  line2.add_point(Vector2 { 20, 500 });
-  line2.add_point(Vector2 { 300, 700 });
-  root.add_child(&line2);
+
+  IKTest test;
+  test.add_point(Vector2 { 0, 0 });
+  test.add_point(Vector2 { 300, 500 });
+  root.add_child(&test);
 
   // main loop
   while (!WindowShouldClose()) {

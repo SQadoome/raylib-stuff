@@ -18,23 +18,23 @@ struct LinkedNode {
 class LinkedObjects {
   public:
     LinkedObjects();
-    bool is_empty;
 
-    LinkedObject start;
-    LinkedObject end;
+    LinkedObject* start;
+    LinkedObject* end;
 
+    bool is_empty();
     void add_object(Object* object_ptr);
 };
 
 
 class LinkedNodes {
   public:
-    LinkedNodes();
-    bool is_empty; 
+    LinkedNodes(); 
 
-    LinkedNode start;
-    LinkedNode end;
+    LinkedNode* start;
+    LinkedNode* end;
     
+    bool is_empty();
     void add_node(Node* node);
 };
 
