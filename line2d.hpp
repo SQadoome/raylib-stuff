@@ -4,14 +4,15 @@
 #include "node.hpp"
 
 class Line2D : public Node {
-  private:
-    DynamicVector2 points;
-  
   public:
+    DynamicVector2 points;
+
+    // the width of the line
     float width;
     
     // color is in char (1 byte size is 255)
     Color color;
+
 
     Line2D();
     

@@ -13,16 +13,17 @@ void process_nodes();
 int main() {
   InitWindow(1280, 720, "Procedural animations");
 
+  // keep in mind these are on the stack !!!
   IKTest test;
-  test.add_point(Vector2 { 0, 0 });
-  test.add_point(Vector2 { 300, 500 });
-  root.add_child(&test);
+  //test.position = Vector2{ 500, 100 };
+  root.add_child(&test); 
+
 
   // main loop
   while (!WindowShouldClose()) {
     handle_input();
 
-    
+     
    
     BeginDrawing();
       ClearBackground(LIGHTGRAY);

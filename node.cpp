@@ -1,10 +1,12 @@
 #include "node.hpp"
 #include <string>
 #include <iostream>
+#include "raylib.h"
 
 Node::Node() : Object() {
   class_tree += "/Node";
   children_chain = new LinkedNodes();
+  position = Vector2 { 0, 0 };
 }
 
 std::string Node::get_class() {

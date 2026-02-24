@@ -2,14 +2,17 @@
 #include "raylib.h"
 #include "node.hpp"
 #include <iostream>
+#include "raymath.h"
 
 Line2D::Line2D() : Node() {
   class_tree += "/Line2D";
-  color = {255, 255, 255, 255};
+  color = DARKGRAY;
   width = 8;
 }
 
-std::string Line2D::get_class() { return "Line2D"; }
+std::string Line2D::get_class() {
+  return "Line2D";
+}
 
 void Line2D::add_point(Vector2 new_point) {
   points.append(new_point);
@@ -32,12 +35,16 @@ Vector2 Line2D::get_point_at(int index) {
 }
 
 void Line2D::_process() {
-  Node::_process();
-  
   if (points.length > 1) {
     for (int i = 1; i < points.length; i++) {
-      DrawLineV(points.get_at(i - 1), points.get_at(i), DARKGRAY);
+      DrawLineEx(
+        Vector2Add(points.get_at(i - 1), position),
+        Vector2Add(points.get_at(i), position),
+        width,
+        color);
     }
   }
+
+  Node::_process();
 }
 
