@@ -2,3 +2,5 @@
 
 app
 Makefile
+lib/
+git_commands.txt
